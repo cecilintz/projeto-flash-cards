@@ -1,0 +1,107 @@
+/* Centralização da página */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Organização dos cartões lado a lado */
+section {
+    display: flex;
+    gap: 16px;
+}
+
+/* Configurações da estrutura do cartão */
+.cartao {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Ajuda a dar profundidade ao efeito 3D */
+}
+
+.cartao-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Efeito de rotação no Hover */
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+/* Configurações da frente e do verso */
+.cartao-frente,
+.cartao-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    
+    /* Adicione estas linhas para colocar a borda marrom: */
+    border: 3px solid #23a2b3; /* #8B4513 é um tom de marrom (SaddleBrown) */
+}
+
+/* Garante que o verso fique previamente girado */
+.cartao-verso {
+    transform: rotateY(180deg);
+}
+
+/* Estilização das imagens e textos dos cartões */
+.cartao-frente img,
+.cartao-verso img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.cartao-frente p,
+.cartao-verso p {
+    padding: 16px;
+    text-align: center;
+}
+
+/* Estilo da faixa marrom do cabeçalho */
+header {
+    background-color: #23a2b3; /* Cor marrom */
+    color: white;              /* Deixa o texto "Confere Aí" branco */
+    padding: 16px;             /* Dá altura e espaço para a faixa */
+}
+
+/* Estilo da faixa marrom do rodapé */
+footer {
+    background-color: #23a2b3; /* Cor marrom */
+    color: white;              /* Deixa o texto do rodapé branco */
+    padding: 5px;             /* Dá altura e espaço para a faixa */
+    text-align: center;        /* Centraliza o texto "Projeto feito por Moni" */
+}
+
+/* Efeito ao passar o mouse no desktop */
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+/* Garante que o cartão também vire se alguém navegar usando a tecla Tab e focar nele */
+.cartao:focus-within .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+/* Feedback visual nos links do cabeçalho quando o mouse passa por cima */
+.cabecalho-link:hover {
+    color: #ffe8d6;
+}
+
+/* Feedback para quem navega por teclado (foco visível) */
+.cabecalho-link:focus {
+    outline: 2px dashed #ffffff;
+    outline-offset: 4px;
+}
+
+/* Micro feedback no momento exato do clique */
+.cabecalho-link:active {
+    opacity: 0.8;
+}
